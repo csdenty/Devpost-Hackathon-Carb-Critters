@@ -1,0 +1,11 @@
+/devpost/learner-profile.md
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+.npm-cache/
+.vercel/
+*.local
+
+.vercel

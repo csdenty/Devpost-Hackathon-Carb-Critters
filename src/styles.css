@@ -1,0 +1,73 @@
+:root { font-family: ui-rounded, 'Segoe UI', system-ui, sans-serif; color: #40392f; background: #f7f3e9; font-synthesis: none; line-height: 1.6; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 260px; }
+button, input, select { font: inherit; }
+button { min-height: 48px; padding: 12px 22px; border: 1px solid transparent; border-radius: 14px; background: #356644; color: #fffdf7; font-weight: 650; cursor: pointer; transition: background .15s; }
+button:hover { background: #274e33; }
+button.secondary { color: #38563b; background: #f1f0e5; border-color: #d5d9c5; }
+button.secondary:hover { background: #e4e7d6; }
+button.full { width: 100%; }
+a { color: #345f3c; overflow-wrap: anywhere; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid #9a5039; outline-offset: 4px; }
+h1:focus { outline: none; }
+.app-shell { width: min(100% - 32px, 620px); margin: 0 auto; padding: 26px 0 20px; }
+.brand { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; font-size: 20px; color: #355d3b; font-weight: 750; margin: 0 8px 24px; }
+.brand-note { flex-basis: 100%; font-size: 12px; font-weight: 400; color: #6d705d; letter-spacing: .06em; padding-left: 25px; }
+.card { padding: clamp(20px, 5vw, 38px); border: 1px solid #e7e2d4; background: #fffdf7; border-radius: 26px; box-shadow: 0 10px 35px #584b2510; }
+.eyebrow { font-size: 11px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; color: #886047; margin: 0 0 8px; }
+h1 { font-size: clamp(27px, 6vw, 35px); line-height: 1.2; letter-spacing: -.035em; margin: 0 0 24px; font-weight: 750; }
+h2 { font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
+p { margin: 12px 0; }
+.dinosaur { display: flex; align-items: center; gap: 16px; margin: 22px 0; }
+.dinosaur img { width: 100px; height: auto; flex: 0 0 100px; }
+.speech { background: #edf1df; border-radius: 18px 18px 18px 4px; padding: 14px 18px; font-size: 15px; }
+.speech p { margin: 0; }
+.intro { margin: 24px 0; color: #6a6256; }
+.small { font-size: 13px; color: #6b6458; line-height: 1.6; }
+label { display: block; font-weight: 650; margin: 18px 0 8px; }
+input, select { width: 100%; min-width: 0; min-height: 48px; padding: 12px; border: 1px solid #a9ae97; border-radius: 10px; color: #40392f; background: white; }
+input[aria-invalid='true'] { border: 2px solid #a3402c; }
+.food-facts { margin: 24px 0; padding: 20px 0; border-block: 1px solid #e4e4d7; }
+dl { margin: 0; }
+dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 18px; padding: 7px 0; }
+dt { color: #6b6458; font-size: 14px; }
+dd { margin: 0; font-size: 14px; font-weight: 650; }
+.serving-entry { display: flex; flex-wrap: wrap; gap: 10px; }
+.serving-entry input { flex: 1 1 75px; }
+.serving-entry button { flex: 1 1 160px; }
+.matches { list-style: none; padding: 0; }
+.food-match { width: 100%; text-align: left; background: #edf1df; color: #304d32; border: 1px solid #cad4b6; margin-bottom: 10px; }
+.food-match:hover { background: #e0e7d0; }
+.food-match strong, .food-match span { display: block; }
+.food-match span { font-size: 13px; font-weight: 400; margin-top: 4px; }
+.camera { background: #2f382a; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; }
+video { width: 100%; height: 100%; object-fit: contain; }
+.notice { border-left: 3px solid #a96b49; padding: 10px 14px; background: #fbf0e5; }
+.error { color: #933b29; font-size: 14px; }
+.total { text-align: center; background: #edf1df; padding: 24px 16px; border-radius: 20px; color: #34543a; }
+.total > span { display: block; font-size: 14px; }
+.total p { margin: 4px 0; line-height: 1.15; }
+.total strong { font-size: clamp(45px, 12vw, 64px); letter-spacing: -.04em; overflow-wrap: anywhere; }
+.total p span { font-size: 25px; }
+.carb-meter { margin-top: 22px; padding-top: 18px; border-top: 1px solid #c9d2b8; }
+.carb-meter .meter-title { font-size: 16px; font-weight: 750; margin: 0 0 16px; line-height: 1.5; }
+.meter-body { display: flex; justify-content: center; gap: 22px; text-align: left; }
+.thermometer { width: 44px; height: 200px; position: relative; flex: 0 0 44px; }
+.thermometer-tube { position: absolute; left: 10px; top: 0; width: 24px; height: 180px; border: 2px solid #4d6650; border-radius: 14px 14px 0 0; background: linear-gradient(to top, #d9e5c6 0% 33.333%, #eee0b9 33.333% 66.667%, #e9c7b7 66.667% 100%); }
+.thermometer-fill { position: absolute; bottom: 0; left: 5px; width: 10px; height: var(--level); max-height: 100%; background: #456e4d; border-radius: 8px 8px 0 0; }
+.thermometer-marker { position: absolute; left: -9px; right: -9px; bottom: var(--level); height: 3px; background: #354d38; transform: translateY(50%); border-radius: 3px; }
+.thermometer-marker::after { content: ''; position: absolute; right: -2px; top: -3px; width: 9px; height: 9px; border-radius: 50%; background: #354d38; }
+.thermometer-bulb { position: absolute; bottom: 0; width: 44px; height: 37px; border: 2px solid #4d6650; border-radius: 50%; background: #456e4d; box-shadow: inset 0 0 0 5px #edf1df; }
+.meter-ranges { height: 180px; display: grid; grid-template-rows: repeat(3, 1fr); min-width: 0; }
+.meter-range { display: flex; flex-direction: column; justify-content: center; border-top: 1px dashed #9aa68c; padding: 3px 9px; color: #5e6653; }
+.meter-range:first-child { border-top: 0; }
+.meter-range span { font-size: 14px; }
+.meter-range small { font-size: 11px; }
+.meter-range.active { border-radius: 7px; background: #fffdf7; color: #34543a; box-shadow: inset 3px 0 #456e4d; font-weight: 750; }
+.carb-meter .meter-note { margin: 12px 0 0; font-size: 11px; line-height: 1.5; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.actions button { flex: 1 1 auto; }
+footer { text-align: center; font-size: 12px; color: #706b5c; padding: 24px 8px; }
+footer span { font-size: 11px; }
+@media (max-width: 380px) { .app-shell { width: calc(100% - 20px); padding-top: 18px; } .dinosaur { gap: 10px; } .dinosaur img { width: 72px; flex-basis: 72px; } .speech { padding: 12px; font-size: 14px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
