@@ -25,7 +25,7 @@ Slice 1 is complete and committed as e94e22b. Latest mechanical evidence: 34 tes
   Learner check: Open the HTTPS preview on the Fold 5, scan the confirmed package, enter servings, and inspect the dinosaur result. Try text fallback and both folded/unfolded layouts. Report whether the scan works and what feels confusing.
   Commit: `Add sourced food check with barcode scanning and dinosaur feedback`
 
-- [ ] **2. Check the demonstration food collection with clear recovery paths**
+- [x] **2. Check the demonstration food collection with clear recovery paths**
   Becomes usable: Search and scan the supported collection, distinguish exact variants, correct invalid entries, revise servings, and understand missing information without getting stuck.
   Why now: Expands the proven path after early phone feedback; evidence gates prevent guessed food or GI data from becoming app results.
   PRD ref: `prd.md > Barcode Lookup and Text Fallback`, `Serving Entry and Carb Calculation`, `GI and Dinosaur Feedback`, `States and Boundaries`
@@ -54,6 +54,15 @@ In learn mode, perform each slice's learner check before its commit. In fast mod
 
 ## Final Review
 
+- [ ] Polish 1: dinosaur reacts to valid portion changes with previous/new totals and servings. Implement first, verify, and pause for learner retry before polish 2.
+- [ ] Polish 2: dinosaur name/personality and stage-specific expressions. Approved by learner; not yet implemented. Keep expressions neutral about foods and carb amounts.
+- [ ] Polish 3: visible “Foods I know” collection to make supported demo foods discoverable. Approved by learner; not yet implemented. Begin after polish 2 learner check.
+
+- [x] Dinosaur overlap corrected — learner confirmed the bounded backdrop fixed the text overlap.
+- [x] Portion-aware higher-band feedback — learner requested smaller-portion option alongside another snack when multiple servings cause the higher classification. Learner confirmed the wording worked.
+
+- [x] Make the dinosaur a stronger focal point — learner requested after confirming session behavior. Larger centered character with a soft backdrop, speech beneath it, and dinosaur feedback leading the result. Learner confirmed visual retry after backdrop overlap was corrected.
+
 - [ ] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
@@ -69,6 +78,16 @@ Reflection: Not yet offered; any personal answer belongs in the ignored learner 
 Activity mode: To be recorded after the wrap-up.
 
 ## Revisions
+
+- Learner confirmed portion-aware higher-band wording worked and approved all three proposed polish ideas, explicitly one at a time to isolate regressions. First change adds neutral before/after serving and carb comparison in dinosaur speech after valid resubmission. Initial/unchanged servings omit it; invalid input does not update results; stage transitions clear comparison. Dinosaur expressions and collection discovery are queued, not included in this first change. No new service, data sourcing, or calculations are introduced.
+
+- Learner confirmed dinosaur backdrop fix, then requested portion-aware higher-band feedback. Result now suggests a smaller portion alongside another snack when multiple servings cross 50g but a single serving is below 50g. Other band feedback and calculations remain unchanged. Updated PRD/spec and focused boundary/wording tests; learner retry pending.
+
+- Visual retry screenshot dinosaur-overlap.png showed the circular backdrop painting above its scene into the heading. Cause: backdrop height derived from scene width while scene layout height followed the shorter SVG. Fixed by reserving a square scene and bounding the backdrop with inset, so its paint stays inside allocated space. Larger character retained. Build/lint and learner visual retry pending.
+
+- Learner confirmed repeat, edit, exit/restart, and refresh worked, then requested a visual refinement: dinosaur felt lost among other elements. Increased its size, centered it above its speech in a soft scene, removed the narrow-screen 72px reduction, and moved result feedback before the numerical panel. Functional session exploration is confirmed; final visual review and ready-to-ship confirmation remain pending. Slice 3 commit will include resolved visual feedback.
+
+- Slice 2 committed as ad5b102. Slice 3 inspection: App replaces result state with scan/exited/greeting objects, so old food/results are cleared; refresh creates greeting state without browser persistence. Scanner cleanup and late permission/native callbacks are covered by existing focused tests. Recoverable React error boundary already provides reload. Production preview starts at http://127.0.0.1:4173. Full repeat/edit/exit/restart/refresh phone exploration and final feedback remain pending; no agent-rendered interaction pass is claimed.
 
 - 2026-10-25 slice 2 learner check complete: Quest physical scan confirmed; Quaker physical scan unavailable because no package is on hand, recorded as untested rather than required for this checkpoint. Learner confirmed Quaker search, 0-to-2 serving correction (66g), unmatched search recovery, and source links. Mechanical recheck: all 38 tests, build, and lint pass. Ready for slice 2 commit.
 

@@ -9,7 +9,7 @@ import type { Food, FoodResult } from './lib/types';
 
 type Session = { stage: 'greeting' | 'scan' | 'search' | 'exited'; message?: string }
   | { stage: 'servings'; food: Food }
-  | { stage: 'result'; food: Food; result: FoodResult };
+  | { stage: 'result'; food: Food; result: FoodResult; previousResult?: FoodResult };
 
 const titles = { greeting: 'A little check before a bite.', scan: 'Let’s find your food.', search: 'Find a familiar food.', servings: 'Let’s check your portion.', result: 'Here’s your food check.', exited: 'See you next time!' };
 
@@ -42,8 +42,8 @@ export default function App() {
         <FoodFacts food={session.food} />
         <ServingForm food={session.food} onResult={(result) => setSession({ stage: 'result', food: session.food, result })} />
       </>}
-      {session.stage === 'result' && <Result food={session.food} result={session.result}
-        onResult={(result) => setSession({ ...session, result })}
+      {session.stage === 'result' && <Result food={session.food} result={session.result} previousResult={session.previousResult}
+        onResult={(result) => setSession({ ...session, previousResult: session.result, result })}
         onRepeat={() => setSession({ stage: 'scan' })} onExit={() => setSession({ stage: 'exited' })} />}
       {session.stage === 'exited' && <>
         <Dinosaur><p>You’ve exited the app. Thanks for being curious about your food!</p></Dinosaur>

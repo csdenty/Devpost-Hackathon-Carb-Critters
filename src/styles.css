@@ -18,10 +18,15 @@ h1:focus { outline: none; }
 h1 { font-size: clamp(27px, 6vw, 35px); line-height: 1.2; letter-spacing: -.035em; margin: 0 0 24px; font-weight: 750; }
 h2 { font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
 p { margin: 12px 0; }
-.dinosaur { display: flex; align-items: center; gap: 16px; margin: 22px 0; }
-.dinosaur img { width: 100px; height: auto; flex: 0 0 100px; }
-.speech { background: #edf1df; border-radius: 18px 18px 18px 4px; padding: 14px 18px; font-size: 15px; }
+.dinosaur { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 12px 0 28px; text-align: center; }
+.dinosaur-scene { position: relative; display: grid; place-items: end center; isolation: isolate; width: min(100%, 280px); aspect-ratio: 1; padding: 12px 24px 4px; }
+.dinosaur-scene::before { content: ''; position: absolute; z-index: -1; inset: 3% 3% 4px; border-radius: 50% 50% 44% 44%; background: radial-gradient(circle at 38% 30%, #f4f4d9, #e3edce 72%); }
+.dinosaur-scene::after { content: ''; position: absolute; z-index: -1; width: 80%; height: 16px; bottom: 4px; border-radius: 50%; background: #cedbb6; }
+.dinosaur img { display: block; width: min(100%, 210px); height: auto; filter: drop-shadow(0 6px 3px #42694312); }
+.speech { position: relative; width: 100%; max-width: 440px; background: #edf1df; border: 1px solid #dce5c8; border-radius: 20px; padding: 18px 22px; font-size: 16px; line-height: 1.6; }
+.speech::before { content: ''; position: absolute; left: calc(50% - 8px); top: -9px; width: 15px; height: 15px; background: #edf1df; border-top: 1px solid #dce5c8; border-left: 1px solid #dce5c8; transform: rotate(45deg); }
 .speech p { margin: 0; }
+.speech .portion-change { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #cad4b6; font-weight: 650; }
 .intro { margin: 24px 0; color: #6a6256; }
 .small { font-size: 13px; color: #6b6458; line-height: 1.6; }
 label { display: block; font-weight: 650; margin: 18px 0 8px; }
@@ -69,5 +74,5 @@ video { width: 100%; height: 100%; object-fit: contain; }
 .actions button { flex: 1 1 auto; }
 footer { text-align: center; font-size: 12px; color: #706b5c; padding: 24px 8px; }
 footer span { font-size: 11px; }
-@media (max-width: 380px) { .app-shell { width: calc(100% - 20px); padding-top: 18px; } .dinosaur { gap: 10px; } .dinosaur img { width: 72px; flex-basis: 72px; } .speech { padding: 12px; font-size: 14px; } }
+@media (max-width: 380px) { .app-shell { width: calc(100% - 20px); padding-top: 18px; } .dinosaur-scene { width: min(100%, 230px); } .dinosaur img { width: min(100%, 170px); } .speech { padding: 16px; font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

@@ -1,10 +1,41 @@
 import { describe, expect, it } from 'vitest';
 import { foods } from '../data/foods';
-import { calculate } from './nutrition';
+import { calculate, feedback, feedbackFor, portionChangeMessage } from './nutrition';
 
 const fixture = (carbs: string) => ({ ...foods[0], carbsPerServing: carbs });
 
 describe('sourced serving calculations', () => {
+  it('explains both directions of a portion change without praising lower numbers', () => {
+    const food = fixture('19');
+    const two = calculate(food, '2');
+    const three = calculate(food, '3');
+    if (!two.ok || !three.ok) throw new Error('Expected valid calculations');
+    expect(portionChangeMessage(three.result, two.result)).toBe('From 57g to 38g: 3 servings to 2 servings. Now you can see how the portion changes the carbs!');
+    expect(portionChangeMessage(two.result, three.result)).toBe('From 38g to 57g: 2 servings to 3 servings. Now you can see how the portion changes the carbs!');
+    expect(portionChangeMessage(undefined, two.result)).toBeUndefined();
+    expect(portionChangeMessage(two.result, two.result)).toBeUndefined();
+  });
+  it('preserves decimal totals and singular servings in the comparison', () => {
+    const food = fixture('16.5');
+    const one = calculate(food, '1');
+    const three = calculate(food, '3');
+    if (!one.ok || !three.ok) throw new Error('Expected valid calculations');
+    expect(portionChangeMessage(one.result, three.result)).toBe('From 16.5g to 49.5g: 1 serving to 3 servings. Now you can see how the portion changes the carbs!');
+  });
+  it('offers a smaller portion when multiple servings cross the higher boundary', () => {
+    const food = fixture('25');
+    const outcome = calculate(food, '2');
+    if (!outcome.ok) throw new Error('Expected valid calculation');
+    const message = feedbackFor(food, outcome.result).message;
+    expect(message).toContain('smaller portion of this snack');
+    expect(message).toContain('different snack');
+  });
+  it.each([['19', '2'], ['50', '1'], ['50', '2']])('retains band feedback for %sg across %s servings', (carbs, servings) => {
+    const food = fixture(carbs);
+    const outcome = calculate(food, servings);
+    if (!outcome.ok) throw new Error('Expected valid calculation');
+    expect(feedbackFor(food, outcome.result)).toEqual(feedback[outcome.result.band]);
+  });
   it.each([
     ['oreo-original-34g', '25', '50'],
     ['quaker-instant-apples-cinnamon-43g', '33', '66'],

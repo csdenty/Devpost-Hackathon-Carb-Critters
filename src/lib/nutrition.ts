@@ -17,6 +17,23 @@ export const feedback: Record<CarbBand, { label: string; message: string }> = {
 
 export type Calculation = { ok: true; result: FoodResult } | { ok: false; error: string };
 
+export function portionChangeMessage(previous: FoodResult | undefined, current: FoodResult): string | undefined {
+  if (!previous || previous.servings === current.servings) return undefined;
+  const servingLabel = (count: number) => `${count} serving${count === 1 ? '' : 's'}`;
+  return `From ${previous.totalCarbs}g to ${current.totalCarbs}g: ${servingLabel(previous.servings)} to ${servingLabel(current.servings)}. Now you can see how the portion changes the carbs!`;
+}
+
+export function feedbackFor(food: Food, result: FoodResult): { label: string; message: string } {
+  const copy = feedback[result.band];
+  if (result.band === 'higher' && result.servings > 1) {
+    const singleServing = calculate(food, '1');
+    if (singleServing.ok && singleServing.result.band !== 'higher') {
+      return { ...copy, message: 'Thanks for checking with me! These servings put your portion toward the top of the Carb-ometer. You could try a smaller portion of this snack, or explore a different snack with fewer carbs.' };
+    }
+  }
+  return copy;
+}
+
 export function calculate(food: Food, raw: string): Calculation {
   if (!/^\d+$/.test(raw) || !Number.isSafeInteger(Number(raw)) || Number(raw) < 1) {
     return { ok: false, error: 'Enter a positive whole number of servings, such as 1 or 2.' };
