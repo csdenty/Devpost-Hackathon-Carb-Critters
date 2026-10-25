@@ -27,7 +27,7 @@ export default function App() {
       <p className="eyebrow">{session.stage === 'result' ? 'Your portion, made clearer' : 'Meet your food buddy'}</p>
       <h1 ref={heading} tabIndex={-1}>{titles[session.stage]}</h1>
       {session.stage === 'greeting' && <>
-        <Dinosaur><p>Hi, I’m your Carb Critter! Let’s take a friendly look at your food, one serving at a time.</p></Dinosaur>
+        <Dinosaur><p>Hi, I’m Pip, your Carb Critter! Let’s get curious about your food, one serving at a time.</p></Dinosaur>
         <p className="intro">Scan a supported package to explore its carbohydrates and glycemic index.</p>
         <button className="full" onClick={() => setSession({ stage: 'scan' })}>Scan food item</button>
       </>}
@@ -38,7 +38,7 @@ export default function App() {
         <button className="secondary" onClick={() => setSession({ stage: 'scan' })}>Try camera again</button>
       </>}
       {session.stage === 'servings' && <>
-        <Dinosaur><p>Found it! Here’s what one serving contains. How many servings are you planning to have?</p></Dinosaur>
+        <Dinosaur expression="curious"><p>Found it! Let’s take a closer look. How many servings are you planning to have?</p></Dinosaur>
         <FoodFacts food={session.food} />
         <ServingForm food={session.food} onResult={(result) => setSession({ stage: 'result', food: session.food, result })} />
       </>}
@@ -46,7 +46,7 @@ export default function App() {
         onResult={(result) => setSession({ ...session, previousResult: session.result, result })}
         onRepeat={() => setSession({ stage: 'scan' })} onExit={() => setSession({ stage: 'exited' })} />}
       {session.stage === 'exited' && <>
-        <Dinosaur><p>You’ve exited the app. Thanks for being curious about your food!</p></Dinosaur>
+        <Dinosaur expression="waving"><p>That’s our food check! Pip’s waving goodbye for now. Come back whenever you’re curious.</p></Dinosaur>
         <button className="full" onClick={() => setSession({ stage: 'greeting' })}>Restart app</button>
       </>}
     </article>

@@ -10,7 +10,7 @@ export function Result({ food, result, previousResult, onResult, onRepeat, onExi
   const copy = feedbackFor(food, result);
   const changeMessage = portionChangeMessage(previousResult, result);
   return <>
-    <Dinosaur>
+    <Dinosaur expression="thoughtful">
       {changeMessage && <p className="portion-change" role="status">{changeMessage}</p>}
       <p>{copy.message}</p>
     </Dinosaur>

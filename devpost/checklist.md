@@ -54,8 +54,8 @@ In learn mode, perform each slice's learner check before its commit. In fast mod
 
 ## Final Review
 
-- [ ] Polish 1: dinosaur reacts to valid portion changes with previous/new totals and servings. Implement first, verify, and pause for learner retry before polish 2.
-- [ ] Polish 2: dinosaur name/personality and stage-specific expressions. Approved by learner; not yet implemented. Keep expressions neutral about foods and carb amounts.
+- [x] Polish 1: dinosaur reacts to valid portion changes with previous/new totals and servings. Verified with 44 tests/build/lint; learner confirmed it worked. Checkpoint 969d67b.
+- [ ] Polish 2: dinosaur name/personality and stage-specific expressions. Implemented with Pip as working name and stage-specific static SVG expressions; learner visual retry pending. Expressions remain neutral about foods and carb amounts.
 - [ ] Polish 3: visible “Foods I know” collection to make supported demo foods discoverable. Approved by learner; not yet implemented. Begin after polish 2 learner check.
 
 - [x] Dinosaur overlap corrected — learner confirmed the bounded backdrop fixed the text overlap.
@@ -78,6 +78,8 @@ Reflection: Not yet offered; any personal answer belongs in the ignored learner 
 Activity mode: To be recorded after the wrap-up.
 
 ## Revisions
+
+- Learner confirmed polish 1 portion comparison worked. Saved visual/portion changes as 969d67b before polish 2. Implemented Pip as a working name and local SVG expressions: friendly greeting, curious scanning/servings, thoughtful results regardless of carb band, waving exit. Compact scan layout keeps camera prominent. No scanner lifecycle or nutrition changes. Learner visual retry pending; Foods I know remains queued until that feedback.
 
 - Learner confirmed portion-aware higher-band wording worked and approved all three proposed polish ideas, explicitly one at a time to isolate regressions. First change adds neutral before/after serving and carb comparison in dinosaur speech after valid resubmission. Initial/unchanged servings omit it; invalid input does not update results; stage transitions clear comparison. Dinosaur expressions and collection discovery are queued, not included in this first change. No new service, data sourcing, or calculations are introduced.
 

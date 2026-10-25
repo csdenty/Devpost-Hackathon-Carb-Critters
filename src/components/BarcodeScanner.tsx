@@ -3,6 +3,7 @@ import { BrowserMultiFormatReader } from '@zxing/browser';
 import { BarcodeFormat, DecodeHintType } from '@zxing/library';
 import { startScanner } from '../lib/scanner';
 import { startNativeScanner } from '../lib/nativeScanner';
+import { Dinosaur } from './Dinosaur';
 
 export function BarcodeScanner({ onCode, onSearch }: { onCode: (code: string) => void; onSearch: () => void }) {
   const video = useRef<HTMLVideoElement>(null);
@@ -47,6 +48,7 @@ export function BarcodeScanner({ onCode, onSearch }: { onCode: (code: string) =>
   }, [onCode, cameraId]);
 
   return <section aria-label="Barcode camera">
+    <Dinosaur expression="curious" compact><p>Let’s see what you’ve got! Show me the package barcode.</p></Dinosaur>
     <div className="camera"><video ref={video} autoPlay muted playsInline aria-label="Live camera preview for barcode scanning" /></div>
     <p role="status">{error || 'Allow camera access, then hold the package barcode steady inside the camera view.'}</p>
     <p className="small">Camera images stay on your device.</p>
