@@ -12,6 +12,7 @@ export type Food = {
   aliases: string[];
   barcodes: string[];
   servingLabel: string;
+  preparationNote?: string;
   carbsPerServing: string;
   nutritionSource: Source;
   gi: null | { value: number; source: Source; matchNotes: string };

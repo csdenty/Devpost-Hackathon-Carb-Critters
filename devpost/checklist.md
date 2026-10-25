@@ -11,11 +11,11 @@ First scan package: Quest Chocolate Chip cookie, 2.08 oz. Learner confirmed wrap
 
 Setup investigation: Node v24.12.0 and npm 11.21.0 are installed. Registry access from the agent shell fails with EACCES. Learner successfully ran npm install in their own terminal; dependencies resolve and package-lock.json is present. Git commands work with a command-local safe.directory setting for this workspace; no global Git configuration was changed.
 
-Slice 1 implementation is present. Mechanical evidence: 30 tests pass, TypeScript/production build and lint pass, dev entry responds HTTP 200. Headless Edge automation could create/attach a target but Runtime.enable timed out; no agent-rendered UI interaction is claimed. Learner confirmed a real laptop-camera scan recognized the Quest wrapper UPC, text search and calculation worked, and the revised dinosaur tone and Carb-ometer were well received. Laptop browser/version was not specified. HTTPS Fold 5 scan and folded/unfolded layout checks remain pending. No Vercel CLI/account connector is available; README includes learner-run CLI deployment instructions. Slice 1 is not committed or checked off until its learn-mode hands-on check is complete.
+Slice 1 is complete and committed as e94e22b. Latest mechanical evidence: 34 tests, TypeScript/production build, and lint pass. Learner confirmed laptop and phone UPC scanning, phone search/calculation, and folded/unfolded layouts. Public demo: https://carb-critters.vercel.app. Exact browser/version and selected lens were not recorded. Resuming slice 2: confirm additional exact food variants and evidence before adding records.
 
 ## Slices
 
-- [ ] **1. Scan or search one sourced food and get dinosaur feedback**
+- [x] **1. Scan or search one sourced food and get dinosaur feedback**
   Becomes usable: A phone-friendly greeting, real camera scan or text fallback, serving entry, and a sourced carb result with the dinosaur's explanation for one confirmed packaged food.
   Why now: Proves the unique kernel and the riskiest assumption—real barcode decoding on the Fold 5—before expanding the collection or polishing the rest.
   PRD ref: `prd.md > The Core Journey`, `Barcode Lookup and Text Fallback`, `Serving Entry and Carb Calculation`, `GI and Dinosaur Feedback`
@@ -69,6 +69,18 @@ Reflection: Not yet offered; any personal answer belongs in the ignored learner 
 Activity mode: To be recorded after the wrap-up.
 
 ## Revisions
+
+- 2026-10-25 slice 2 learner check complete: Quest physical scan confirmed; Quaker physical scan unavailable because no package is on hand, recorded as untested rather than required for this checkpoint. Learner confirmed Quaker search, 0-to-2 serving correction (66g), unmatched search recovery, and source links. Mechanical recheck: all 38 tests, build, and lint pass. Ready for slice 2 commit.
+
+- 2026-10-25: learner reports scanning a UPC returned the intended item after the catalog expansion. Exact product was not specified; do not infer a Quaker scan from this report. Slice 2 invalid-input correction, no-match search, recalculation, and source-link learner feedback remain unconfirmed.
+
+- Expanded catalog verification: all 38 tests, production build/type check, and lint pass. New tests cover exact Quaker UPC/EAN matching, unsupported variants/no matches, and OREO/Quaker label-serving totals. Recovery code retains empty search, unknown barcode fallback, camera retry, editable invalid/overflow entries, source links, and stage heading focus. Browser-rendered recovery/source-link and narrow-layout checks require learner testing in this environment; no automated visual pass is claimed.
+
+- Learner selected regular Original Oreos and Quaker Instant Oatmeal Apples & Cinnamon. Added US Original Family Size OREO (3 cookies/34g, 25g carbs) from manufacturer label; search-only without verified UPC. Added Quaker 43g packet (33g carbs) with manufacturer-confirmed 8-packet box UPC 030000567296 and readable retailer nutrition corroboration. Oat totals explicitly exclude milk/additions. Missing GI remains unavailable. Source retrieval limitations are recorded in food-sources.md. Phone/visual recovery and slice 2 learner exploration remain pending.
+
+- Slice 2 in progress: learner confirmed packaged Oats Overnight and accepted Green Apple Cinnamon. Manufacturer label supplies 36g total carbohydrate per 71g pouch. Added search-only record and explicit pouch-only preparation text before and after calculation, without unverified UPC or GI. Exact Oreo and Quaker varieties still await learner selection.
+
+- Slice 1 committed as e94e22b after successful phone checkpoint. Next: slice 2, starting with exact Oreo/Quaker variants and overnight-oats identity. Earlier pending statements below are historical.
 
 - Learner confirmed the phone search/calculation and folded/unfolded layouts worked following the successful UPC scan. Early hands-on checkpoint complete. Slice 1 is ready for its commit; latest 34 tests, build, and lint pass.
 

@@ -7,8 +7,8 @@ export function FoodSearch({ onSelect }: { onSelect: (food: Food) => void }) {
   const matches = searchFoods(query);
   return <section>
     <label htmlFor="food-query">Food name or brand</label>
-    <input id="food-query" type="search" value={query} placeholder="Try Quest or chocolate chip" onChange={(event) => setQuery(event.target.value)} />
-    <p className="small">Our small demo collection currently includes one Quest Chocolate Chip Protein Cookie.</p>
+    <input id="food-query" type="search" value={query} placeholder="Try Quest or overnight oats" onChange={(event) => setQuery(event.target.value)} />
+    <p className="small">Try Quest cookies, Original Oreos, Quaker Apples &amp; Cinnamon, or Oats Overnight Green Apple Cinnamon. Oreos and Oats Overnight are available by name search only.</p>
     <div aria-live="polite">
       {!query.trim() ? <p>Enter a food name to find a match.</p> : matches.length ? <>
         <p className="small">{matches.length} matching food{matches.length === 1 ? '' : 's'}</p>

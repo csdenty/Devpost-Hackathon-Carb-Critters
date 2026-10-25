@@ -22,11 +22,14 @@ npm run preview -- --host 127.0.0.1
 
 Production preview runs at http://127.0.0.1:4173.
 
-## Supported food — slice 1
+## Supported foods
 
-| Exact food | Individual package UPC | Serving | Total carbs |
+| Exact food | Supported UPC | Serving | Total carbs |
 | --- | --- | --- | --- |
 | Quest Chocolate Chip Protein Cookie, 2.08 oz | 888849005994 | 1 cookie (59g) | 19g |
+| Original OREO Chocolate Sandwich Cookies, Family Size | Search only | 3 cookies (34g) | 25g |
+| Quaker Instant Oatmeal Apples & Cinnamon, 8-packet box | 030000567296 (box) | 1 packet (43g), with water | 33g |
+| Oats Overnight Green Apple Cinnamon | Search only | 1 pouch (71g), before milk | 36g |
 
 Wrapper values were confirmed by the learner and corroborated by the [manufacturer](https://www.questnutrition.com/products/chocolate-chip-cookies). See [food evidence](devpost/food-sources.md). Other variants and box barcodes are not supported yet. No verified GI value has been established for this product. Tests use clearly separate synthetic boundary fixtures.
 
@@ -40,20 +43,16 @@ Scan the actual supported wrapper, test text fallback, and inspect folded/unfold
 
 ## Verification status
 
-- Second phone retry still failed to decode, while a Google Play scanner app read the same wrapper. Added optional browser-native UPC/EAN detection alongside ZXing and a camera selector for multi-camera phones. Native support is checked at runtime; this is not yet a confirmed mobile fix. Redeploy and retry on the Fold 5.
-
-- Phone update: Brave on Galaxy Fold 5 opened the camera after permission, but did not detect the UPC. Local scanner improvements request higher resolution, enable thorough UPC/EAN decoding, and display the full frame. Tests/build/lint pass; redeployment and phone retry are pending. Mobile barcode compatibility remains unverified.
-
-- 30 focused tests pass: calculation/validation/bands, catalog evidence and barcode matching, scanner lifecycle.
-- TypeScript, production build, and lint pass.
-- Local dev server serves the Vite entry successfully.
-- Learner tested the actual Quest wrapper with a laptop camera: UPC recognized. Text search and calculation worked as expected; revised casual dinosaur tone and Carb-ometer were accepted. Laptop browser/version not yet recorded.
-- Agent's headless Edge automation could not enable the page runtime in this environment. No rendered interaction, keyboard, visual, or camera test is claimed.
-- Galaxy Fold 5 scan, real browser/version, folded/unfolded presentation, source-link usability, and public HTTPS access: **pending learner checks**.
-- Development dependencies and exact resolved versions are recorded in `package-lock.json`. Core packages React/React DOM/Vite/Vitest/React plugin/ZXing browser use MIT licenses; TypeScript uses Apache-2.0. ZXing browser installed version: 0.2.1; [upstream release history](https://github.com/zxing-js/browser/releases) was inspected during setup. Compatibility must be validated by the actual phone scan.
+- 38 focused tests pass; TypeScript, production build, and lint pass. The build reports a bundle-size advisory.
+- Learner confirmed Quest wrapper UPC recognition on laptop and Galaxy Fold 5, phone text lookup/calculation, and folded/unfolded layouts. Brave was used in the phone investigation; exact browser versions are unrecorded.
+- Learner confirmed Quaker text lookup, invalid 0 servings corrected to 2 (66g), no-match recovery, and nutrition source links.
+- Quaker box camera scan remains untested because no physical package was available. OREO and Oats Overnight remain search-only.
+- Agent headless Edge runtime automation was unavailable. No agent-rendered interaction or visual pass is claimed.
+- Repeat, exit/restart, refresh reset, and signed-out public access require final learner exploration.
+- Dependencies are pinned in package-lock.json. React/React DOM/Vite/Vitest/React plugin/ZXing use MIT licenses; TypeScript uses Apache-2.0.
 
 ## Boundaries
 
 The app displays: “For general education only. Not for medical diagnosis or treatment, insulin dosing, or predicting your personal glucose response.” Estimated GI and glycemic load were discussed and deliberately deferred; missing verified GI remains unavailable.
 
-Total carbohydrates use the sourced label's decimal precision and positive whole-number servings. GI is not multiplied by servings. Lower/moderate/higher bands are learner-selected demo rules, not individualized targets, insulin guidance, or glucose predictions. The session stays in browser memory and resets on refresh. Additional foods, full recovery review, and final learner sign-off remain later build steps.
+Total carbohydrates use the sourced label's decimal precision and positive whole-number servings. GI is not multiplied by servings. Lower/moderate/higher bands are learner-selected demo rules, not individualized targets, insulin guidance, or glucose predictions. The session stays in browser memory and resets on refresh. Final session-flow exploration and learner sign-off remain pending.

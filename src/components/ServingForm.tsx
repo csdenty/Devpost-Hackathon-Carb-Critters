@@ -6,6 +6,7 @@ export function FoodFacts({ food }: { food: Food }) {
   return <section className="food-facts" aria-label="Food information">
     <p className="eyebrow">{food.brand}</p>
     <h2>{food.name}</h2>
+    {food.preparationNote && <p className="notice">{food.preparationNote}</p>}
     <dl>
       <div><dt>Serving size</dt><dd>{food.servingLabel}</dd></div>
       <div><dt>Total carbs per serving</dt><dd>{food.carbsPerServing}g</dd></div>

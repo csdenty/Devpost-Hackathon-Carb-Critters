@@ -4,9 +4,17 @@ import { foods } from '../data/foods';
 import { findByBarcode, normalizeBarcode, searchFoods } from './catalog';
 
 describe('catalog lookup and evidence', () => {
+  it('matches only the verified Quaker box and distinguishes requested variants', () => {
+    expect(findByBarcode('030000567296')?.id).toBe('quaker-instant-apples-cinnamon-43g');
+    expect(findByBarcode('0030000567296')?.id).toBe('quaker-instant-apples-cinnamon-43g');
+    expect(searchFoods('regular oreos').map((food) => food.id)).toEqual(['oreo-original-34g']);
+    expect(searchFoods('double stuf')).toEqual([]);
+    expect(searchFoods('quaker lower sugar')).toEqual([]);
+    expect(searchFoods('unmatched food')).toEqual([]);
+  });
   it('matches the confirmed UPC and equivalent EAN-13', () => {
-    expect(findByBarcode('888849005994')).toBe(foods[0]);
-    expect(findByBarcode('0888849005994')).toBe(foods[0]);
+    expect(findByBarcode('888849005994')).toBe(foods.find((food) => food.id === 'quest-chocolate-chip-cookie-59g'));
+    expect(findByBarcode('0888849005994')).toBe(foods.find((food) => food.id === 'quest-chocolate-chip-cookie-59g'));
     expect(findByBarcode('8884900599')).toBeUndefined();
     expect(findByBarcode('888849006090')).toBeUndefined();
   });
@@ -16,9 +24,9 @@ describe('catalog lookup and evidence', () => {
     expect(findByBarcode('1888849005994')).toBeUndefined();
   });
   it('searches name, brand, and aliases ignoring case and surrounding spaces', () => {
-    expect(searchFoods('  QUEST chocolate  ')).toEqual([foods[0]]);
-    expect(searchFoods('cookies')).toEqual([foods[0]]);
-    expect(searchFoods('oats')).toEqual([]);
+    expect(searchFoods('  QUEST chocolate  ')).toEqual([foods.find((food) => food.id === 'quest-chocolate-chip-cookie-59g')]);
+    expect(searchFoods('cookies').map((food) => food.id)).toEqual(['oreo-original-34g', 'quest-chocolate-chip-cookie-59g']);
+    expect(searchFoods('oats').map((food) => food.id)).toEqual(['quaker-instant-apples-cinnamon-43g', 'oats-overnight-green-apple-cinnamon-71g']);
     expect(searchFoods('   ')).toEqual([]);
   });
   it('requires evidence and unique valid barcodes for every published food', () => {
