@@ -12,8 +12,8 @@ export function FoodFacts({ food }: { food: Food }) {
       <div><dt>Total carbs per serving</dt><dd>{food.carbsPerServing}g</dd></div>
       <div><dt>Glycemic index (GI)</dt><dd>{food.gi ? food.gi.value : 'GI unavailable'}</dd></div>
     </dl>
-    <p className="small">Nutrition source: <a href={food.nutritionSource.url}>{food.nutritionSource.title}</a></p>
-    {food.gi && <p className="small">GI source: <a href={food.gi.source.url}>{food.gi.source.title}</a>. {food.gi.matchNotes}</p>}
+    <p className="small">Nutrition source: <a href={food.nutritionSource.url} target="_blank" rel="noopener noreferrer">{food.nutritionSource.title} <span>(opens in a new tab)</span></a></p>
+    {food.gi && <p className="small">GI source: <a href={food.gi.source.url} target="_blank" rel="noopener noreferrer">{food.gi.source.title} <span>(opens in a new tab)</span></a>. {food.gi.matchNotes}</p>}
   </section>;
 }
 

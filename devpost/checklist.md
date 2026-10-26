@@ -11,7 +11,7 @@ First scan package: Quest Chocolate Chip cookie, 2.08 oz. Learner confirmed wrap
 
 Setup investigation: Node v24.12.0 and npm 11.21.0 are installed. Registry access from the agent shell fails with EACCES. Learner successfully ran npm install in their own terminal; dependencies resolve and package-lock.json is present. Git commands work with a command-local safe.directory setting for this workspace; no global Git configuration was changed.
 
-Slice 1 is complete and committed as e94e22b. Latest mechanical evidence: 34 tests, TypeScript/production build, and lint pass. Learner confirmed laptop and phone UPC scanning, phone search/calculation, and folded/unfolded layouts. Public demo: https://carb-critters.vercel.app. Exact browser/version and selected lens were not recorded. Resuming slice 2: confirm additional exact food variants and evidence before adding records.
+All three build slices and final refinements are implemented and learner-reviewed. Latest mechanical evidence: 44 tests, TypeScript/production build, and lint pass. Public demo: https://carb-critters.vercel.app. Quest phone scanning confirmed; Quaker physical scan remains untested. Final ready-to-ship confirmation received; recording commits and learning wrap-up.
 
 ## Slices
 
@@ -48,22 +48,24 @@ Slice 1 is complete and committed as e94e22b. Latest mechanical evidence: 34 tes
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — after slice 1, including genuine Fold 5 package scan, text fallback, dinosaur feedback, and folded/unfolded layout feedback
-- [ ] Final kick-the-tires exploration and feedback completed — after slice 3; includes the full collection and repeated-session behavior
+- [x] Final kick-the-tires exploration and feedback completed — after slice 3; includes the full collection and repeated-session behavior
 
 In learn mode, perform each slice's learner check before its commit. In fast mode, pause at the early and final checkpoints; the slice 2 learner check is included in final exploration.
 
 ## Final Review
 
+- [x] Source links open a new tab — learner's final requested refinement. Shared nutrition/GI links updated with visible new-tab text and noopener/noreferrer; learner confirmed the final source-link change and readiness.
+
 - [x] Polish 1: dinosaur reacts to valid portion changes with previous/new totals and servings. Verified with 44 tests/build/lint; learner confirmed it worked. Checkpoint 969d67b.
-- [ ] Polish 2: dinosaur name/personality and stage-specific expressions. Implemented with Pip as working name and stage-specific static SVG expressions; learner visual retry pending. Expressions remain neutral about foods and carb amounts.
-- [ ] Polish 3: visible “Foods I know” collection to make supported demo foods discoverable. Approved by learner; not yet implemented. Begin after polish 2 learner check.
+- [x] Polish 2: dinosaur name/personality and stage-specific expressions. Learner accepted Pip and stage-specific expressions; checkpoint 9f01a7c. Expressions remain neutral about foods and carb amounts.
+- [x] Polish 3: visible “Foods I know” collection to make supported demo foods discoverable. Learner accepted the new collection discovery feature.
 
 - [x] Dinosaur overlap corrected — learner confirmed the bounded backdrop fixed the text overlap.
 - [x] Portion-aware higher-band feedback — learner requested smaller-portion option alongside another snack when multiple servings cause the higher classification. Learner confirmed the wording worked.
 
 - [x] Make the dinosaur a stronger focal point — learner requested after confirming session behavior. Larger centered character with a soft backdrop, speech beneath it, and dinosaur feedback leading the result. Learner confirmed visual retry after backdrop overlap was corrected.
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
@@ -78,6 +80,12 @@ Reflection: Not yet offered; any personal answer belongs in the ignored learner 
 Activity mode: To be recorded after the wrap-up.
 
 ## Revisions
+
+- Final source-link retry accepted: learner says looks good after stating ready once that last refinement is done. All requested visual, portion-feedback, personality, discovery, and source-tab refinements accepted. Final review complete. Latest 44 tests, build/type check, and lint pass; only documentation changes followed. Quaker physical scan remains untested, GI remains unavailable, and agent visual checks remain unclaimed.
+
+- Learner accepted Foods I know and requested source links open a new tab as the last refinement before readiness. Updated shared FoodFacts nutrition/GI anchors so the active check stays in its original tab. Conditional ready-to-ship intent recorded; final source-link learner retry pending. App map prepared from current source; browser rendering was unavailable, so artifact checks are static.
+
+- Learner accepted Pip's personality/expressions; saved as 9f01a7c before polish 3. Added visible Foods I know below greeting's scan action, generated from the live bundled catalog. Four food buttons show servings/carbs and scan/name availability, and lead directly to the existing serving form without requesting camera access. Added Quaker box-only and oat-addition clarification. Learner exploration pending; no other feature added in this increment.
 
 - Learner confirmed polish 1 portion comparison worked. Saved visual/portion changes as 969d67b before polish 2. Implemented Pip as a working name and local SVG expressions: friendly greeting, curious scanning/servings, thoughtful results regardless of carb band, waving exit. Compact scan layout keeps camera prominent. No scanner lifecycle or nutrition changes. Learner visual retry pending; Foods I know remains queued until that feedback.
 

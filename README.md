@@ -2,6 +2,8 @@
 
 A phone-friendly food check with a green dinosaur, sourced total carbohydrates, and general educational feedback. React, TypeScript, Vite, and local ZXing barcode decoding; no accounts, database, AI endpoint, or runtime nutrition API.
 
+Public demo: https://carb-critters.vercel.app. Pip explains food checks, compares changed portions, and introduces the supported collection through **Foods I know**. See the standalone [app map](devpost/app-map.html) for code navigation and the real-device verification takeaway.
+
 ## Run locally
 
 Tested tooling: Node **24.12.0**, npm **11.21.0**. Install a compatible supported Node LTS release.
@@ -31,7 +33,7 @@ Production preview runs at http://127.0.0.1:4173.
 | Quaker Instant Oatmeal Apples & Cinnamon, 8-packet box | 030000567296 (box) | 1 packet (43g), with water | 33g |
 | Oats Overnight Green Apple Cinnamon | Search only | 1 pouch (71g), before milk | 36g |
 
-Wrapper values were confirmed by the learner and corroborated by the [manufacturer](https://www.questnutrition.com/products/chocolate-chip-cookies). See [food evidence](devpost/food-sources.md). Other variants and box barcodes are not supported yet. No verified GI value has been established for this product. Tests use clearly separate synthetic boundary fixtures.
+Wrapper values were confirmed by the learner and corroborated by the [manufacturer](https://www.questnutrition.com/products/chocolate-chip-cookies). See [food evidence](devpost/food-sources.md). Quest box barcodes and other product variants are not supported; the separately listed Quaker box barcode is supported. No verified GI value has been established for this product. Tests use clearly separate synthetic boundary fixtures.
 
 ## Phone camera check
 
@@ -43,16 +45,16 @@ Scan the actual supported wrapper, test text fallback, and inspect folded/unfold
 
 ## Verification status
 
-- 38 focused tests pass; TypeScript, production build, and lint pass. The build reports a bundle-size advisory.
+- 44 focused tests pass; TypeScript, production build, and lint pass. The build reports a bundle-size advisory.
 - Learner confirmed Quest wrapper UPC recognition on laptop and Galaxy Fold 5, phone text lookup/calculation, and folded/unfolded layouts. Brave was used in the phone investigation; exact browser versions are unrecorded.
 - Learner confirmed Quaker text lookup, invalid 0 servings corrected to 2 (66g), no-match recovery, and nutrition source links.
 - Quaker box camera scan remains untested because no physical package was available. OREO and Oats Overnight remain search-only.
 - Agent headless Edge runtime automation was unavailable. No agent-rendered interaction or visual pass is claimed.
-- Repeat, exit/restart, refresh reset, and signed-out public access require final learner exploration.
+- Learner confirmed repeat, serving edits, exit/restart, refresh reset, and the final visual/portion/discovery refinements. Source links open a new tab and preserve the active check; learner accepted the final retry. Public HTTPS returned HTTP 200 without authentication in the agent header check.
 - Dependencies are pinned in package-lock.json. React/React DOM/Vite/Vitest/React plugin/ZXing use MIT licenses; TypeScript uses Apache-2.0.
 
 ## Boundaries
 
 The app displays: “For general education only. Not for medical diagnosis or treatment, insulin dosing, or predicting your personal glucose response.” Estimated GI and glycemic load were discussed and deliberately deferred; missing verified GI remains unavailable.
 
-Total carbohydrates use the sourced label's decimal precision and positive whole-number servings. GI is not multiplied by servings. Lower/moderate/higher bands are learner-selected demo rules, not individualized targets, insulin guidance, or glucose predictions. The session stays in browser memory and resets on refresh. Final session-flow exploration and learner sign-off remain pending.
+Total carbohydrates use the sourced label's decimal precision and positive whole-number servings. GI is not multiplied by servings. Lower/moderate/higher bands are learner-selected demo rules, not individualized targets, insulin guidance, or glucose predictions. The session stays in browser memory and resets on refresh. Final session-flow exploration and learner sign-off are complete.

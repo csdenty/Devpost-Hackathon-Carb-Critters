@@ -49,6 +49,12 @@ dd { margin: 0; font-size: 14px; font-weight: 650; }
 .food-match:hover { background: #e0e7d0; }
 .food-match strong, .food-match span { display: block; }
 .food-match span { font-size: 13px; font-weight: 400; margin-top: 4px; }
+.known-foods { border-top: 1px solid #e4e4d7; margin-top: 28px; padding-top: 24px; }
+.known-foods h2 { margin-bottom: 8px; }
+.known-foods .food-match { padding: 16px; overflow-wrap: anywhere; }
+.known-foods .food-availability { display: block; font-size: 11px; color: #526044; margin: 0 0 6px; }
+.known-foods .food-select { display: block; margin-top: 10px; font-size: 13px; font-weight: 650; }
+.known-foods .food-select span { display: inline; }
 .camera { background: #2f382a; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; }
 video { width: 100%; height: 100%; object-fit: contain; }
 .notice { border-left: 3px solid #a96b49; padding: 10px 14px; background: #fbf0e5; }

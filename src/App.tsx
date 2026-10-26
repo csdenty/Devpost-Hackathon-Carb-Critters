@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { BarcodeScanner } from './components/BarcodeScanner';
 import { Dinosaur } from './components/Dinosaur';
 import { FoodSearch } from './components/FoodSearch';
+import { KnownFoods } from './components/KnownFoods';
 import { FoodFacts, ServingForm } from './components/ServingForm';
 import { Result } from './components/Result';
 import { findByBarcode } from './lib/catalog';
@@ -30,6 +31,7 @@ export default function App() {
         <Dinosaur><p>Hi, I’m Pip, your Carb Critter! Let’s get curious about your food, one serving at a time.</p></Dinosaur>
         <p className="intro">Scan a supported package to explore its carbohydrates and glycemic index.</p>
         <button className="full" onClick={() => setSession({ stage: 'scan' })}>Scan food item</button>
+        <KnownFoods onSelect={(food) => setSession({ stage: 'servings', food })} />
       </>}
       {session.stage === 'scan' && <BarcodeScanner onCode={onCode} onSearch={() => setSession({ stage: 'search' })} />}
       {session.stage === 'search' && <>
