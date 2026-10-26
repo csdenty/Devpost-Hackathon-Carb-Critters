@@ -1,5 +1,7 @@
 # Carb Critters
 
+Licensed under the [MIT License](LICENSE). Third-party dependencies retain their respective licenses.
+
 A phone-friendly food check with a green dinosaur, sourced total carbohydrates, and general educational feedback. React, TypeScript, Vite, and local ZXing barcode decoding; no accounts, database, AI endpoint, or runtime nutrition API.
 
 Public demo: https://carb-critters.vercel.app. Pip explains food checks, compares changed portions, and introduces the supported collection through **Foods I know**. See the standalone [app map](devpost/app-map.html) for code navigation and the real-device verification takeaway.
