@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Carb Critters · App map</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f3e9;color:#40392f;font:17px/1.65 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:32px 20px}h1,h2{line-height:1.2}h1{font-size:2.4rem;color:#356644}.card{background:#fffdf7;border:1px solid #dce5c8;border-radius:20px;padding:22px;margin:20px 0}.flow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.step{flex:1;min-width:180px;padding:16px;background:#edf1df;border-radius:14px}.step strong,.step code{display:block}code{overflow-wrap:anywhere;font-size:.9em}a{color:#345f3c;text-underline-offset:3px}a:focus-visible{outline:3px solid #9a5039;outline-offset:4px}li{margin:10px 0}pre{white-space:pre-wrap;background:#edf1df;padding:16px;border-radius:12px}small{color:#6b6458}
+</style></head><body><main>
+<p>Carb Critters · Reference map</p><h1>A food check with Pip</h1>
+<p>Scan a supported package, search, or choose a food from “Foods I know.” Enter whole-number servings to see sourced total carbs, GI availability, and Pip’s explanation. The current check stays in memory and resets on refresh.</p>
+<section class="card"><h2>One action through the app</h2><div class="flow" aria-label="Food choice to visible result">
+<div class="step"><strong>Choose a food</strong><code>KnownFoods → App</code>Open its serving form.</div><span aria-hidden="true">→</span>
+<div class="step"><strong>Calculate servings</strong><code>ServingForm → calculate</code>Validate and multiply sourced carbs.</div><span aria-hidden="true">→</span>
+<div class="step"><strong>Understand the result</strong><code>Result → Dinosaur + CarbMeter</code>Show totals, feedback, and portion changes.</div></div></section>
+<section class="card"><h2>Three stops to revisit</h2><p>This is a reference route, not a claim of a completed interactive code tour.</p><ol>
+<li><a href="../src/App.tsx">src/App.tsx</a> — <code>Session</code> and <code>setSession</code> hold the active stage. Repeat, exit, and restart replace the selected food/result; valid edits keep one previous result for comparison.</li>
+<li><a href="../src/lib/nutrition.ts">src/lib/nutrition.ts</a> — <code>calculate</code> uses integer-scaled decimal arithmetic. <code>feedbackFor</code> adds a smaller-portion option when multiple servings cross into the higher band. <code>portionChangeMessage</code> explains edits neutrally.</li>
+<li><a href="../src/components/Result.tsx">src/components/Result.tsx</a> — <code>Result</code> puts Pip’s explanation above exact totals, the Carb-ometer, sources, and editable servings.</li>
+</ol></section>
+<section class="card"><h2>To change this, start here</h2><ul>
+<li>Foods, labels, and supported barcodes: <a href="../src/data/foods.ts">foods.ts</a>; trace evidence in <a href="food-sources.md">food-sources.md</a>. Missing verified GI stays unavailable. Oat totals exclude milk/toppings.</li>
+<li>Food discovery: <a href="../src/components/KnownFoods.tsx">KnownFoods.tsx</a> reads the same catalog as search. It does not maintain a separate list.</li>
+<li>Pip’s artwork and expressions: <a href="../src/components/Dinosaur.tsx">Dinosaur.tsx</a> and local <code>public/dinosaur*.svg</code>. Expressions follow activity, not carb bands. Layout is in <a href="../src/styles.css">styles.css</a>.</li>
+<li>Source links and serving entry: <a href="../src/components/ServingForm.tsx">ServingForm.tsx</a>. Sources open a new tab and retain the app’s active check.</li>
+<li>Camera selection and decoders: <a href="../src/components/BarcodeScanner.tsx">BarcodeScanner.tsx</a>, <a href="../src/lib/scanner.ts">scanner.ts</a>, and <a href="../src/lib/nativeScanner.ts">nativeScanner.ts</a>. Native detection is optional; ZXing remains available.</li>
+</ul></section>
+<section class="card"><h2>A practice to reuse</h2><p>Test the risky behavior on the real target device early. Camera permission and a live preview worked on the Fold before UPC recognition did. A separate scanner app reading the same wrapper helped narrow the investigation. Optional native detection, camera selection, and a successful phone retry provided stronger evidence than unit tests alone.</p><p>Keep that distinction on another project: <a href="../src/lib/scanner.test.ts">scanner lifecycle tests</a> establish cleanup behavior, while actual-device trials establish camera usability. Quaker’s box barcode is evidenced and matched in tests, but a physical Quaker scan remains untested.</p></section>
+<section class="card"><h2>Run it again</h2><pre>npm ci
+npm run dev -- --host 127.0.0.1
+
+npm test
+npm run build
+npm run lint</pre><p>Open localhost:5173 on the computer. For phone scanning use the HTTPS deployment. Deploy with <code>npx vercel --prod</code>.</p><p><small>Snapshot prepared 2026-10-25 from completed app checkpoint 00af8f5, including Foods I know and the source-link refinements. Check current source and Git history if this map drifts. Standalone HTML: no scripts, fonts, or network requests required to read it. Relative source links require the repository beside this file.</small></p></section>
+</main></body></html>

@@ -35,7 +35,7 @@ All three build slices and final refinements are implemented and learner-reviewe
   Learner check: Search cookies and oats, inspect serving labels and sources, try an unmatched search and invalid servings, then change a valid serving count. Confirm the totals and explanations update and missing GI is clear.
   Commit: `Complete evidenced food catalog and recovery states`
 
-- [ ] **3. Repeat or end a complete food-check session**
+- [x] **3. Repeat or end a complete food-check session**
   Becomes usable: A complete repeatable demonstration with another scan, exit/restart, refresh reset, and clear setup and supported-food instructions.
   Why now: Finishes session boundaries around the proven check and prepares a coherent final review without adding deferred features.
   PRD ref: `prd.md > Repeat, Exit, and Restart`, `States and Boundaries`, `What We're Building`
@@ -69,17 +69,19 @@ In learn mode, perform each slice's learner check before its commit. In fast mod
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: Not yet performed. Use the early real-phone scanner investigation to connect planning assumptions to verification, matching the learner's planning and agent-collaboration goal.
-Route and stops: To be recorded from actual implementation.
-Edit outcome: Not yet offered.
-Reflection: Not yet offered; any personal answer belongs in the ignored learner profile.
-Activity mode: To be recorded after the wrap-up.
+Activity and evidence: Focused alternative from the real phone-scanner investigation, connected through a brief recap. Learner tested phone versus PC and a separate scanner app, then confirmed successful app scanning after changes. Recap distinguishes lifecycle tests from real hardware compatibility; no personal learning claim is made.
+Route and stops: App.tsx (Session/setSession), lib/nutrition.ts (calculate/feedbackFor/portionChangeMessage), components/Result.tsx (Result). Map provides this as a reference route; it was not an interactive code tour.
+Edit outcome: Separate optional exercise not applicable; learner-directed portion-feedback, artwork/layout, food discovery, and link behavior refinements already supplied verified change-and-retry practice.
+Reflection: Optional transfer question offered at handoff; no response required or claimed. Any personal answer belongs in the ignored learner profile.
+Activity mode: Existing hands-on investigation connected to an evidence-based recap. Map generated, relative source paths/anchors checked against code, and shown by local link. Standalone/offline structure checked statically; no rendered browser check claimed.
 
 ## Revisions
+
+- Slice 3 committed as 00af8f5. Checklist ticked immediately after commit; all slices and final review complete. App map snapshot updated to 00af8f5. Wrap-up uses completed scanner investigation rather than repeating a tutorial. 5-build complete; next is 6-ship.
 
 - Final source-link retry accepted: learner says looks good after stating ready once that last refinement is done. All requested visual, portion-feedback, personality, discovery, and source-tab refinements accepted. Final review complete. Latest 44 tests, build/type check, and lint pass; only documentation changes followed. Quaker physical scan remains untested, GI remains unavailable, and agent visual checks remain unclaimed.
 
